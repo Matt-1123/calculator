@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+/* screen (green-blue): #BCCD96
+screen (gray inner border): #999E88
+screen (black border): #22222A
+container (medium gray): #3E4442
+number buttons (darker gray): #303030
+operations buttons (red): #FF4365
+equal button: #151515 */
+* {box-sizing: border-box;}
+
+div, header, footer{
+  display: block;
+  float: left;
+  width: 100%;
+  position: relative;
+}
+body{
+  background-color: #b1c2dd;
+}
+
+.container{
+  float: none;
+  margin: 80px auto;
+  height: 480px;
+  width: 360px;
+  background-color: #555e5b;
+  padding: 20px 10px 20px 10px;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+}
+#display{
+  float: none;
+  margin: 0 auto 10px auto;
+  background-color: #BCCD96;
+  height: 60px;
+  line-height: 60px;
+  text-align: right;
+  padding: 0 5px 0 5px;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 2px;
+  font-size: 40px;
+}
+#buttons-container{
+  background-color: #fff;
+  height: 280px;
+  width: 80%;
+  margin: 0 10% 0 10%;
+  padding: 0;
+  cursor: pointer;
+}
+#buttons-container ul{
+  list-style-type: none;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  line-height: 70px;
+  font-size: 24px;
+}
+#buttons-container ul li{
+  float: left;
+  background-color: #303030;
+  color: #fff;
+  width: 25%;
+  border: 1px solid white;
+  height: 25%;
+}
+#buttons-container ul li:hover{
+  opacity: 0.9;
+}
+#buttons-container .operator{
+  background-color: #e62e00;
+}
+.equal-button{
+  width: 80%;
+  margin: 8px 10% 0 10%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #ff6600;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.equal-button:hover{
+  opacity: 0.8;
+}
