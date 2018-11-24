@@ -26,7 +26,7 @@
 
       $buttons.on('click', '.number', function(){
         let el = $(this);
-        if(state == 0){
+        if(state == 0 || state == 1){
           state = 1;
           if(num1.length <= 10){
             num1 += el.html();
@@ -37,9 +37,15 @@
           if(num2.length <= 10){
             num2 += el.html();
           }
+          console.log($operators.length);
+          for(let i=0; i<$operators.length; i++){
+            if($operators.eq(i).hasClass('pressed')){
+              $operators.eq(i).removeClass('pressed');
+            }
+          }
           $display.html(num2);
           console.log(num1 + " " + operator + " " + num2);
-        }
+        };
       });
 
       $operators.on('click', function(){
@@ -49,15 +55,19 @@
           state = 2;
           if(el.is('#add')){
             operator = 'add';
+            el.addClass('pressed');
           };
           if(el.is('#subtract')){
             operator = 'subtract';
+            el.addClass('pressed');
           };
           if(el.is('#multiply')){
             operator = 'multiply';
+            el.addClass('pressed');
           };
           if(el.is('#divide')){
             operator = 'divide';
+            el.addClass('pressed');
           };
         }
       });

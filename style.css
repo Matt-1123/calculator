@@ -73,6 +73,9 @@ body{
 #buttons-container .operator{
   background-color: #e62e00;
 }
+.pressed{
+  opacity: 0.8;
+}
 .equal-button{
   width: 80%;
   margin: 8px 10% 0 10%;
