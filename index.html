@@ -18,14 +18,18 @@
       // state 0: add num1
       // state 1: OK to click $operator
       // state 2: add num2
+      // state 3: OK to hit equals
       let state = 0;
       let num1 = '';
       let num2 = '';
       let operator;
       let result;
+      let num1Decimal = false;
+      let num2Decimal = false;
 
       $buttons.on('click', '.number', function(){
         let el = $(this);
+        console.log(el);
         if(state == 0 || state == 1){
           state = 1;
           if(num1.length <= 10){
@@ -33,7 +37,8 @@
           }
           $display.html(num1);
         }
-        if(state == 2){
+        if(state == 2 || state == 3){
+          state = 3;
           if(num2.length <= 10){
             num2 += el.html();
           }
@@ -73,28 +78,33 @@
       });
 
       $('.equal-button').on('click', function(){
-        num1 = parseInt(num1);
-        num2 = parseInt(num2);
-        if(operator == 'add'){
-          result = num1 + num2;
-          $display.html(result);
-        }
-        if(operator == 'subtract'){
-          result = num1 - num2;
-          $display.html(result);
-        }
-        if(operator == 'multiply'){
-          result = num1 * num2;
-          $display.html(result);
-        }
-        if(operator == 'divide'){
-          result = num1 / num2;
-          $display.html(result);
+        // can only be clicked if both numbers entered
+        if (state == 3){
+          num1 = parseFloat(num1);
+          num2 = parseFloat(num2);
+          if(operator == 'add'){
+            result = num1 + num2;
+            $display.html(result);
+          }
+          if(operator == 'subtract'){
+            result = num1 - num2;
+            $display.html(result);
+          }
+          if(operator == 'multiply'){
+            result = num1 * num2;
+            $display.html(result);
+          }
+          if(operator == 'divide'){
+            result = num1 / num2;
+            $display.html(result);
+          }
         }
       });
 
       $('#clear').on('click', function(){
         num1 = '';
+        num2 = '';
+        operator = '';
         $display.html(num1);
       });
     });
@@ -121,7 +131,7 @@
         <li class='operator' id='subtract'>-</li>
 
         <li class="number">0</li>
-        <li id='decimal'>.</li>
+        <li class='number'>.</li>
         <li id="clear">AC</li>
         <li class='operator' id='add'>+</li>
       </ul>
